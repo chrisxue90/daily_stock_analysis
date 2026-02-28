@@ -7,12 +7,15 @@ category: entry_signal
 core_rules: [1, 2, 3, 4]
 required_tools:
   - get_daily_history
-  - calculate_fundamental_value
+  - get_stock_info
   - analyze_trend
 instructions: |
   **白胖左侧网格交易策略（完全来自手册原文）**
   核心逻辑：针对基本面低估、未来价值确定的标的，在股价低于合理价值区间时，通过网格交易分批建仓，持续降低持仓成本，同时配套严格的仓位控制，规避单边下跌风险，最终实现左侧转右侧的趋势交易。
 
+  使用 `get_daily_history` 获取近 120 日股票走势数据：
+  使用 `get_stock_info` 获取标的基本面信息： 估值水平、行业景气度、基本面稳定性等。
+  使用 `analyze_trend` 判断技术面趋势强度，辅助确认转右。
   一、左侧标的筛选规则（手册原文）
   1. **基本面估值要求**
      - 业绩平稳可预期的行业（银行、保险、家电、白酒等）：PE处于近十年历史最低值平均水平，为低估状态；
